@@ -10,7 +10,6 @@ import React, { useState } from "react";
 const HomreScreen = () => {
   const [value, setvalue] = useState("");
 
-
   let urlApiCli = 'https://api.openweathermap.org/data/2.5/weather?appid=26c25a94171b06cf681d940caed738cf&lang=es'
   let cityUrl = "&q="
   let urlForecast = 'https://api.openweathermap.org/data/2.5/weather?appid=26c25a94171b06cf681d940caed738cf&lang=es'
