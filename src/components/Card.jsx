@@ -1,26 +1,37 @@
-import { View, Text } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 import React from 'react'
+import Spiner from './Spiner'
+import Info from './Info'
 
-const Card = ({show, loading, weather, forecast}) => {
+const Card = ({ show, loading, weather, forecast }) => {
   return (
-    <View>
-        {
-          show === true ? (
-              <View>
-                  <View>
-                     <Text>si hay info</Text>
-                     <Text>{weather.name}</Text>
-                     <Text>{weather.timezone}</Text>
-                     <Text>{weather.id}</Text>
-                  </View>
-                    
-              </View>
-          ):(
-            <Text>No</Text>
-          )
-        }
-    </View>
+    <View style={styles.container}>
+      {
+        show === true ? (
+          <Info
+            loading={loading}
+            weather={weather}
+            forecast={forecast}
+          />
+        ) : (
+          <Spiner />
+        )
+      }
+    </View >
   )
 }
 
 export default Card
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'red',
+    marginVertical: 50,
+    borderRadius: 10,
+    padding: 10,
+    // flex: 1,
+    // justifyContent: 'center',  centrar en el medio
+    // alignItems: 'center',
+    // backgroundColor: '#F5FCFF',
+  },
+})
