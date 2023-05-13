@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
+import Clouds from './Clouds'
 
 const Info = ({ forecast, loading, weather, }) => {
 
@@ -9,28 +10,23 @@ const Info = ({ forecast, loading, weather, }) => {
     var year = today.getFullYear()
     var date = day + '/' + month + '/' + year
 
-    return (
+    console.log(weather)
+    return ( 
         <View style={{ backgroundColor: 'gray' }}>
             <View>
                 <Text style={styles.id}>ID : {weather.id}</Text>
-                <Text style={styles.Text}>{weather.name}</Text>
+                <Text style={styles.Text}>{weather.name} - {weather.sys.country}</Text>
                 <Text style={styles.temperatura}>{(weather.main.temp - 273.15).toFixed(1)} °C</Text>
                 <Text style={styles.date}>{date}</Text>
 
                 <View style={styles.dos}>
-                    <Text style={styles.templace}>Zona horaria : {weather.timezone}</Text>
-                    <Text style={styles.templace}>Humedad : {weather.main.humidity}g / m³</Text>
+                    <Text style={styles.templace}>🚧 Zona horaria : {weather.timezone}</Text>
+                    <Text style={styles.templace}>💧 Humedad : {weather.main.humidity}%</Text>
                 </View>
 
-                <Text style={styles.viento}>Velocidad del viento {weather.wind.speed}m/s</Text>
+                <Text style={styles.viento}>💨 Velocidad del viento {weather.wind.speed}m/s E</Text>
                 <View style={styles.templace}></View>
-                <Text style={{
-                    textAlign: 'center',
-                    fontSize: 20,
-                    fontWeight: 'bold',
-                    marginTop: 10,
-                    marginBottom: 10,
-                }}>Coordenadas :</Text>
+                <Text style={styles.title}>Coordenadas :</Text>
                 <View style={styles.coord}>
                     <Image
                         source={require('../../assets/lati.png')}
@@ -53,10 +49,9 @@ const Info = ({ forecast, loading, weather, }) => {
                         </View>
                     </View>
                 </View>
-                <Text>Descripción general : {weather.weather[0].description}</Text>
-                <Text>Pais al que pertence :</Text>
-                <Text>{weather.sys.country}</Text>
-                <Text>ID del pais : {weather.sys.id}</Text>
+                <Text style={styles.title}>Descripción general</Text>
+                <Text> </Text>
+                <Clouds nubes={weather.weather[0].description}/>
 
             </View>
 
@@ -116,5 +111,12 @@ const styles = StyleSheet.create({
     lon: {
         justifyContent: 'space-between',
         flexDirection: 'row',
+    },
+    title: {
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginTop: 10,
+        marginBottom: 10,
     }
 })

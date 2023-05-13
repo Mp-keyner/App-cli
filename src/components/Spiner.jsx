@@ -8,7 +8,7 @@ const Spiner = () => (
         {/* <ActivityIndicator size="small" color="#0000ff" /> */}
         {/* <ActivityIndicator size="large" color="#00ff00" /> */}
     </View>
-);
+); 
 
 const styles = StyleSheet.create({
     container: {
